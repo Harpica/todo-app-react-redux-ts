@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Plant eggplant",
+      "completed": true
+    },
+    {
+      "title": "new todo",
+      "id": 2,
+      "completed": false
+    },
+    {
+      "title": "new todo",
+      "id": 3,
+      "completed": true
+    },
+    {
+      "title": "new todo",
+      "id": 4,
+      "completed": true
+    },
+    {
+      "title": "new todo",
+      "id": 5,
+      "completed": true
+    }
+  ]
+}
