@@ -1,22 +1,21 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import Button from "@mui/material/Button";
 import { Checkbox } from "@mui/material";
-import { AppThunkDispatch, deleteTodo, deleteTodoAsync, TodoState, toggleComplete, toggleCompleteAsync } from "../redux/todoSlice";
-import { useDispatch } from "react-redux";
+import { todo, Todo } from "../mobx/todo";
 
-interface TodoItemProps extends TodoState {
+
+interface TodoItemProps extends Todo{
 }
 
-
-const TodoItem:React.FC<TodoItemProps> = ({ id, title, completed }) => {
-  const dispatch = useDispatch<AppThunkDispatch>();
+const TodoItem:React.FC<TodoItemProps> = observer(({ id, title, completed }) => {
 
   const handleCheckboxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(toggleCompleteAsync({id, completed: !completed}));
+    todo.toggleCompleteTodo(id);
   };
 
   const handleDeleteClick:React.MouseEventHandler<HTMLButtonElement> = () => {
-		dispatch(deleteTodoAsync({ id }));
+    todo.deleteTodo(id);
 	};
 
   return (
@@ -34,6 +33,6 @@ const TodoItem:React.FC<TodoItemProps> = ({ id, title, completed }) => {
       </div>
     </li>
   );
-};
+})
 
 export default TodoItem;
